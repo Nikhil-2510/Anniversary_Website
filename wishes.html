@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anniversary Wish</title>
+  <link rel="stylesheet" href="wishes.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
+  <style>
+    #animated-text {
+      font-family: 'Oleo Script', cursive;
+    }
+  </style>
+</head>
+<body>
+  <div class="back-button">
+    <a href="index.html">← Back to Home</a>
+  </div>
+
+  <div class="container">
+    <div class="letter" id="animated-text"></div>
+  </div>
+
+  <script>
+    const text = `
+My dear Tannu,
+
+Happy 3rd Anniversary! 💖  
+May you always be happy and keep that beautiful smile on your face.
+
+I know we got together unexpectedly, and initially it was a difficult situation for you...  
+But you always loved me, even during the tough times.  
+Whenever you got angry at me, you still forgave me —  
+You accepted my apologies and made everything feel right again.
+
+I hope you’ll always cherish the beautiful memories we’ve created —  
+Dancing together, eating our favorite food,  
+Celebrating New Year’s, birthdays, previous anniversaries,  
+Valentine’s Days, freshers, and so many other lovely moments.
+
+I wish you always remain the same sweet, loving person…  
+And I promise to give my best to keep you happy forever.
+
+With all my heart,  
+Nikku ❤️`;
+
+    const container = document.getElementById("animated-text");
+    let i = 0;
+
+    function typeText() {
+      if (i < text.length) {
+        container.innerHTML += text[i] === '\n' ? '<br>' : text[i];
+        i++;
+        setTimeout(typeText, 50);
+      }
+    }
+
+    window.onload = typeText;
+  </script>
+<audio id="bg-music" loop>
+  <source src="music1.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="document.getElementById('bg-music').play()">🎵 Play Music</button>
+
+
+</body>
+</html>
