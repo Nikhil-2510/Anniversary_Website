@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quiz</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        background: radial-gradient(circle at top, #0d0d2b, #000000);
+        background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+        background-size: cover;
+        color: white;
+        text-align: center;
+        animation: galaxyMove 40s linear infinite;
+    }
+
+    @keyframes galaxyMove {
+        from { background-position: 0 0; }
+        to { background-position: 1000px 1000px; }
+    }
+
+    h1 {
+        font-size: 2.5em;
+        margin-top: 20px;
+        color: #fff;
+        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+    }
+
+    .quiz-container {
+        max-width: 700px;
+        margin: auto;
+        padding: 20px;
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.4);
+        box-shadow: 0 0 15px #00ffff;
+    }
+
+    .question {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+        opacity: 0;
+        animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .options button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        font-size: 1.1em;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background: #111;
+        cursor: pointer;
+        box-shadow: 0 0 10px #00ffff;
+        transition: 0.3s;
+        opacity: 0;
+        animation: fadeIn 2s ease forwards;
+        animation-delay: 0.5s;
+    }
+
+    .options button:hover {
+        box-shadow: 0 0 20px #ff00ff;
+        background: #222;
+    }
+
+    .result {
+        font-size: 2em;
+        margin-top: 30px;
+        color: #00ffcc;
+        text-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        text-decoration: none;
+        color: white;
+        background: #111;
+        border-radius: 5px;
+        box-shadow: 0 0 10px #00ffff;
+        transition: 0.3s;
+    }
+
+    .back-btn:hover {
+        background: #222;
+        box-shadow: 0 0 20px #ff00ff;
+    }
+</style>
+</head>
+<body>
+
+<h1>Fun Quiz</h1>
+
+<div class="quiz-container">
+    <div id="quiz"></div>
+    <div id="result" class="result"></div>
+    <a href="home.html" class="back-btn">⬅ Back to Home</a>
+</div>
+
+<script>
+    const quizData = [
+        {
+            question: "What's my favorite food?",
+            options: ["Pizza", "Veg Biryani", "Pasta", "Burger"],
+            answer: "Veg Biryani"
+        },
+        {
+            question: "What's my favorite color?",
+            options: ["Red", "Dark Blue", "Black", "Pink"],
+            answer: "Dark Blue"
+        },
+        {
+            question: "What's my favorite game?",
+            options: ["PUBG", "Free Fire", "Minecraft", "COD Mobile"],
+            answer: "Free Fire"
+        },
+        {
+            question: "What do I prefer more?",
+            options: ["Smart Watch", "Analog Watch", "Digital Watch", "No Watch"],
+            answer: "Analog Watch"
+        },
+        {
+            question: "Who's my favorite person?",
+            options: ["Tannu", "Aman", "Vaishnavi", "Vinay"],
+            answer: "Tannu"
+        }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    const quizContainer = document.getElementById("quiz");
+    const resultContainer = document.getElementById("result");
+
+    function loadQuestion() {
+        if (currentQuestion < quizData.length) {
+            let q = quizData[currentQuestion];
+            quizContainer.innerHTML = `
+                <div class="question">${q.question}</div>
+                <div class="options">
+                    ${q.options.map(opt => `<button onclick="checkAnswer('${opt}')">${opt}</button>`).join('')}
+                </div>
+            `;
+        } else {
+            quizContainer.innerHTML = "";
+            resultContainer.innerHTML = `Your total score is ${score} out of ${quizData.length}.<br>`;
+            if (score >= 1) {
+                resultContainer.innerHTML += "💖 A surprise is waiting for you tomorrow 💖";
+            } else {
+                resultContainer.innerHTML += "Better luck next time!";
+            }
+        }
+    }
+
+    function checkAnswer(selected) {
+        if (selected === quizData[currentQuestion].answer) {
+            score++;
+        }
+        
+        currentQuestion++;
+        loadQuestion();
+    }
+
+    loadQuestion();
+</script>
+
+</body>
+</html>
