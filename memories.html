@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Memories</title>
+  <link rel="stylesheet" href="memories.css" />
+</head>
+<body>
+
+    <div class="floating-circles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
+  <!-- Image Grid -->
+  <div class="heart-container">
+    <div class="row">
+      <div class="block"><img src="1.jpg" alt=""></div>
+      <div class="block"><img src="2.jpg" alt=""></div>
+    </div>
+    <div class="row">
+      <div class="block"><img src="3.jpg" alt=""></div>
+      <div class="block"><img src="4.jpg" alt=""></div>
+      <div class="spacer"></div>
+      <div class="block"><img src="5.jpg" alt=""></div>
+      <div class="block"><img src="6.jpg" alt=""></div>
+    </div>
+    <div class="row">
+      <div class="block"><img src="7.jpg" alt=""></div>
+      <div class="block"><img src="8.jpg" alt=""></div>
+      <div class="block"><img src="9.jpg" alt=""></div>
+      <div class="block"><img src="10.jpg" alt=""></div>
+      <div class="block"><img src="11.jpg" alt=""></div>
+    </div>
+    <div class="row">
+      <div class="block"><img src="12.jpg" alt=""></div>
+      <div class="block"><img src="13.jpg" alt=""></div>
+      <div class="block"><img src="14.jpg" alt=""></div>
+      <div class="block"><img src="15.jpg" alt=""></div>
+    </div>
+    <div class="row">
+      <div class="block"><img src="16.jpg" alt=""></div>
+      <div class="block"><img src="17.jpg" alt=""></div>
+      <div class="block"><img src="18.jpg" alt=""></div>
+    </div>
+    <div class="row">
+      <div class="block"><img src="19.jpg" alt=""></div>
+      <div class="block"><img src="20.jpg" alt=""></div>
+    </div>
+    <div class="row last-row">
+      <div class="block"><img src="21.jpg" alt=""></div>
+    </div>
+  </div>
+
+  <!-- Image Popup -->
+  <div class="popup" id="popup">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <img id="popup-img" src="" alt="Popup Image" />
+  </div>
+
+  <!-- Back Button -->
+  <div class="back-button">
+    <a href="home.html">← Back to Home</a>
+  </div>
+
+  <!-- JS for popup -->
+  <script>
+    const popup = document.getElementById('popup');
+    const popupImg = document.getElementById('popup-img');
+
+    document.querySelectorAll('.block img').forEach(img => {
+      img.addEventListener('click', () => {
+        popupImg.src = img.src;
+        popup.style.display = 'flex';
+      });
+    });
+
+    function closePopup() {
+      popup.style.display = 'none';
+      popupImg.src = '';
+    }
+
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) {
+        closePopup();
+      }
+    });
+  </script>
+</body>
+</html>
+
+
