@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Love Timeline</title>
+<style>
+    /* Galaxy background */
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%), 
+                    url('https://www.transparenttextures.com/patterns/stardust.png');
+        color: #fff;
+        background-size: cover;
+        background-attachment: fixed;
+        overflow-x: hidden;
+    }
+
+    /* Neon heading */
+    h1 {
+        text-align: center;
+        font-size: 3em;
+        margin: 20px 0;
+        color: #ff00ff;
+        text-shadow:
+            0 0 5px #ff00ff,
+            0 0 10px #ff00ff,
+            0 0 20px #ff00ff,
+            0 0 40px #ff00ff;
+    }
+
+    /* Timeline container */
+    .timeline {
+        position: relative;
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px 0;
+    }
+
+    /* Neon vertical rod */
+    .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 6px;
+        height: 100%;
+        background: #0ff;
+        box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+    }
+
+    /* Memory blocks */
+    .memory {
+        background: rgba(0, 0, 0, 0.8);
+        border: 2px solid #0ff;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 30px 0;
+        width: 40%;
+        box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+        opacity: 0;
+        transform: translateY(50px);
+        animation: fadeUp 2.5s ease forwards;
+        position: relative;
+    }
+
+    /* Alternating left/right */
+    .memory.left {
+        left: 0;
+    }
+
+    .memory.right {
+        left: 60%;
+    }
+
+    /* Connection dots */
+    .memory::before {
+        content: '';
+        position: absolute;
+        top: 20px;
+        width: 20px;
+        height: 20px;
+        background: #ff00ff;
+        border-radius: 50%;
+        box-shadow: 0 0 5px #ff00ff, 0 0 15px #ff00ff, 0 0 30px #ff00ff;
+        z-index: 1;
+    }
+
+    .memory.left::before {
+        right: -38px;
+    }
+
+    .memory.right::before {
+        left: -38px;
+    }
+
+    /* Animation delays */
+    .memory:nth-child(1) { animation-delay: 0.5s; }
+    .memory:nth-child(2) { animation-delay: 3s; }
+    .memory:nth-child(3) { animation-delay: 5.5s; }
+    .memory:nth-child(4) { animation-delay: 8s; }
+    .memory:nth-child(5) { animation-delay: 10.5s; }
+    .memory:nth-child(6) { animation-delay: 13s; }
+    .memory:nth-child(7) { animation-delay: 15.5s; }
+
+    @keyframes fadeUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Photo styling */
+    .photos {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .photos img {
+        width: 45%;
+        max-width: 300px;
+        border-radius: 8px;
+        box-shadow: 0 0 5px #fff, 0 0 10px #0ff;
+    }
+
+    .text {
+        margin-top: 15px;
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    /* Back button */
+    .back-button {
+        display: inline-block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background: transparent;
+        border: 2px solid #ff00ff;
+        color: #ff00ff;
+        text-decoration: none;
+        font-size: 1.2em;
+        border-radius: 5px;
+        text-shadow: 0 0 5px #ff00ff;
+        box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff inset;
+    }
+
+    .back-button:hover {
+        background: #ff00ff;
+        color: #000;
+    }
+
+    /* Mobile view */
+    @media screen and (max-width: 768px) {
+        .timeline::before {
+            left: 20px;
+        }
+        .memory {
+            width: calc(100% - 60px);
+            left: 40px !important;
+        }
+        .memory.left::before, .memory.right::before {
+            left: -30px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<h1>Our Love Timeline</h1>
+
+<div class="timeline">
+    <div class="memory left">
+        <h2>Birthday Celebrations</h2>
+        <div class="photos">
+            <img src="birthday1.jpg" alt="Birthday Photo 1">
+            <img src="birthday2.jpg" alt="Birthday Photo 2">
+        </div>
+        <div class="text">Our special birthday moments together 🎂💖</div>
+    </div>
+
+    <div class="memory right">
+        <h2>Valentine's Celebrations</h2>
+        <div class="photos">
+            <img src="valentine1.jpg" alt="Valentine Photo 1">
+            <img src="valentine2.jpg" alt="Valentine Photo 2">
+        </div>
+        <div class="text">Celebrating love on Valentine's Day 💘🌹</div>
+    </div>
+
+    <div class="memory left">
+        <h2>Freshers Day in College</h2>
+        <div class="photos">
+            <img src="freshers1.jpg" alt="Freshers Day Photo 1">
+            <img src="freshers2.jpg" alt="Freshers Day Photo 2">
+        </div>
+        <div class="text">Our unforgettable Freshers Day moments 🎉</div>
+    </div>
+
+    <div class="memory right">
+        <h2>Movie Dates</h2>
+        <div class="photos">
+            <img src="movie1.jpg" alt="Movie Date Photo 1">
+            <img src="movie2.jpg" alt="Movie Date Photo 2">
+        </div>
+        <div class="text">Enjoying movies and popcorn together 🎬🍿</div>
+    </div>
+
+    <div class="memory left">
+        <h2>New Year</h2>
+        <div class="photos">
+            <img src="newyear1.jpg" alt="New Year Photo 1">
+            <img src="newyear2.jpg" alt="New Year Photo 2">
+        </div>
+        <div class="text">Welcoming the new year with love 🎆❤️</div>
+    </div>
+
+    <div class="memory right">
+        <h2>Travelling Together via Bus</h2>
+        <div class="photos">
+            <img src="travel1.jpg" alt="Bus Travel Photo 1">
+            <img src="travel2.jpg" alt="Bus Travel Photo 2">
+        </div>
+        <div class="text">Our sweet journeys together 🚌💑</div>
+    </div>
+
+    <div class="memory left">
+        <h2>Previous Anniversary</h2>
+        <div class="photos">
+            <img src="anniversary1.jpg" alt="Anniversary Photo 1">
+            <img src="anniversary2.jpg" alt="Anniversary Photo 2">
+        </div>
+        <div class="text">Celebrating our love anniversary 🥂💞</div>
+    </div>
+</div>
+
+<a href="index.html" class="back-button">⬅ Back</a>
+
+</body>
+</html>
