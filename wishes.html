@@ -17,13 +17,22 @@
     <a href="index.html">← Back to Home</a>
   </div>
 
-  <div class="container">
+  <!-- Open Surprise Button -->
+  <div id="start-screen">
+    <button id="open-btn">💌 Open Your Surprise</button>
+  </div>
+
+  <!-- Hidden container for the letter -->
+  <div class="container" id="letter-container" style="display: none;">
     <div class="letter" id="animated-text"></div>
   </div>
 
+  <audio id="bg-music" loop>
+    <source src="music1.mp3" type="audio/mpeg">
+  </audio>
+
   <script>
-    const text = `
-My dear Tannu,
+    const text = `My dear Tannu,
 
 Happy 3rd Anniversary! 💖  
 May you always be happy and keep that beautiful smile on your face.
@@ -55,14 +64,12 @@ Nikku ❤️`;
       }
     }
 
-    window.onload = typeText;
+    document.getElementById('open-btn').addEventListener('click', () => {
+      document.getElementById('start-screen').style.display = 'none';
+      document.getElementById('letter-container').style.display = 'block';
+      document.getElementById('bg-music').play();
+      typeText();
+    });
   </script>
-<audio id="bg-music" loop>
-  <source src="music1.mp3" type="audio/mpeg">
-</audio>
-
-<button onclick="document.getElementById('bg-music').play()">🎵 Play Music</button>
-
-
 </body>
 </html>
