@@ -79,3 +79,28 @@ body {
 .back-button a:hover {
   background-color: #ff69b4;
 }
+
+/* Centered start screen button */
+#start-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#open-btn {
+  padding: 15px 30px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff69b4;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+#open-btn:hover {
+  background-color: #ff85c1;
+  transform: scale(1.1);
+}
